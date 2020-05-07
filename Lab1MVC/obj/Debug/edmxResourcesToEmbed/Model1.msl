@@ -1,0 +1,106 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LabMVC_B53953ModelStoreContainer" CdmEntityContainer="LabMVC">
+    <EntitySetMapping Name="Major">
+      <EntityTypeMapping TypeName="LabMVC_B53953Model.Major">
+        <MappingFragment StoreEntitySet="Major">
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Nationality">
+      <EntityTypeMapping TypeName="LabMVC_B53953Model.Nationality">
+        <MappingFragment StoreEntitySet="Nationality">
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Student">
+      <EntityTypeMapping TypeName="LabMVC_B53953Model.Student">
+        <MappingFragment StoreEntitySet="Student">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="DeleteStudent" FunctionName="LabMVC_B53953Model.Store.DeleteStudent" />
+    <FunctionImportMapping FunctionImportName="InsertUpdateStudent" FunctionName="LabMVC_B53953Model.Store.InsertUpdateStudent" />
+    <FunctionImportMapping FunctionImportName="SelectMajor" FunctionName="LabMVC_B53953Model.Store.SelectMajor">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabMVC_B53953Model.SelectMajor_Result">
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectNationality" FunctionName="LabMVC_B53953Model.Store.SelectNationality">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabMVC_B53953Model.SelectNationality_Result">
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectStudent" FunctionName="LabMVC_B53953Model.Store.SelectStudent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabMVC_B53953Model.SelectStudent_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalityName" ColumnName="NationalityName" />
+          <ScalarProperty Name="MajorName" ColumnName="MajorName" />
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SelectStudentById" FunctionName="LabMVC_B53953Model.Store.SelectStudentById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabMVC_B53953Model.SelectStudentById_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalityName" ColumnName="NationalityName" />
+          <ScalarProperty Name="MajorName" ColumnName="MajorName" />
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpDeleteStudent" FunctionName="LabMVC_B53953Model.Store.DeleteStudent" />
+    <FunctionImportMapping FunctionImportName="SpInsertUpdateStudent" FunctionName="LabMVC_B53953Model.Store.InsertUpdateStudent" />
+    <FunctionImportMapping FunctionImportName="SpSelectStudent" FunctionName="LabMVC_B53953Model.Store.SelectStudent">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabMVC_B53953Model.SelectStudent_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalityName" ColumnName="NationalityName" />
+          <ScalarProperty Name="MajorName" ColumnName="MajorName" />
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpSelectStudentById" FunctionName="LabMVC_B53953Model.Store.SelectStudentById">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LabMVC_B53953Model.SelectStudentById_Result">
+          <ScalarProperty Name="StudentId" ColumnName="StudentId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="NationalityName" ColumnName="NationalityName" />
+          <ScalarProperty Name="MajorName" ColumnName="MajorName" />
+          <ScalarProperty Name="NationalityId" ColumnName="NationalityId" />
+          <ScalarProperty Name="MajorId" ColumnName="MajorId" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="SpSelectMajor" FunctionName="LabMVC_B53953Model.Store.SelectMajor" />
+    <FunctionImportMapping FunctionImportName="SpSelectNationality" FunctionName="LabMVC_B53953Model.Store.SelectNationality" />
+  </EntityContainerMapping>
+</Mapping>

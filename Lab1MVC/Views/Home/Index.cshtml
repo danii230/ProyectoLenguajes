@@ -1,0 +1,107 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<script src="~/Scripts/jquery-3.3.1.js"></script>
+<script src="~/Scripts/bootstrap.js"></script>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+<script src="~/Scripts/Student.js"></script>
+
+<link type="text/css" href="~/Content/datatables.css" rel="stylesheet" />
+<script src="~/Scripts/datatables.js"></script>
+
+<h2>Student Record</h2>
+<button type="button" class="btn btn-primary" data-toggle="modal" onclick="clearTextBox();">Add New Student </button>
+<br />
+<br />
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" id="table">
+
+        <thead>
+            <tr>
+                <th>
+                    ID
+                </th>
+                <th>
+                    Name
+                </th>
+                <th>
+                    Age
+                </th>
+                <th>
+                    Nationality
+                </th>
+                <th>
+                    Major
+                </th>
+                <th>
+                    Action
+                </th>
+            </tr>
+        </thead>
+        <tbody class="tbody">
+        </tbody>
+    </table>
+
+</div>
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" hidden>
+
+    <div class="modal-dialog">
+
+        <div class="modal-content">
+
+            <div class="modal-header">
+
+                <button type="button" class="close" data-dismiss="modal">X</button>
+                <h4 class="modal-title" id="titleAdd" data-dismiss="modal"> Add Student </h4>
+                <h4 class="modal-title" id="titleUpdate" style="display:none"> Update Student </h4>
+
+            </div>
+            <div class="modal-body">
+
+                <form>
+                    <div class="form-group">
+                        <label for="StudentId">ID</label>
+                        <input type="text" class="form-control" id="StudentId" placeholder="ID" disabled="disabled" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Name">Name</label>
+                        <input type="text" class="form-control" id="Name" placeholder="Name" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Age">Age</label>
+                        <input type="text" class="form-control" id="Age" placeholder="Age" autocomplete="off">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Nationality">Nationality</label>
+                        <select class="form-control" id="NationalitiesDropdown" name="NationalitiesDropdown"></select>
+
+                    </div>
+
+                    <div class="form-group">
+                        <label for="Major">Major</label>
+                        <select class="form-control" id="MajorsDropdown" name="MajorDropdown"></select>
+
+                    </div>
+
+                </form>
+            </div>
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-backdrop="false" id="btnAdd" onclick="validateForm('add');">Add</button>
+                <button type="button" class="btn btn-primary" data-backdrop="false" id="btnUpdate" style="display:none" onclick="validateForm('update');">Update</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+
+
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+

@@ -1,0 +1,128 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="LabMVC_B53953Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Major">
+    <Key>
+      <PropertyRef Name="MajorId" />
+    </Key>
+    <Property Name="MajorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Student__MajorId__48CFD27E" FromRole="Major" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Nationality">
+    <Key>
+      <PropertyRef Name="NationalityId" />
+    </Key>
+    <Property Name="NationalityId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Student__Nationa__47DBAE45" FromRole="Nationality" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="NationalityId" Type="Int32" />
+    <Property Name="MajorId" Type="Int32" />
+    <NavigationProperty Name="StudentMajor" Relationship="Self.FK__Student__MajorId__48CFD27E" FromRole="Student" ToRole="Major" />
+    <NavigationProperty Name="StudentNationality" Relationship="Self.FK__Student__Nationa__47DBAE45" FromRole="Student" ToRole="Nationality" />
+  </EntityType>
+  <Association Name="FK__Student__MajorId__48CFD27E">
+    <End Role="Major" Type="Self.Major" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Major">
+        <PropertyRef Name="MajorId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="MajorId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__Nationa__47DBAE45">
+    <End Role="Nationality" Type="Self.Nationality" Multiplicity="0..1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Nationality">
+        <PropertyRef Name="NationalityId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="NationalityId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="LabMVC" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Major" EntityType="Self.Major" />
+    <EntitySet Name="Nationality" EntityType="Self.Nationality" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <AssociationSet Name="FK__Student__MajorId__48CFD27E" Association="Self.FK__Student__MajorId__48CFD27E">
+      <End Role="Major" EntitySet="Major" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__Nationa__47DBAE45" Association="Self.FK__Student__Nationa__47DBAE45">
+      <End Role="Nationality" EntitySet="Nationality" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <FunctionImport Name="DeleteStudent">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="InsertUpdateStudent">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Age" Mode="In" Type="Int32" />
+      <Parameter Name="Nationality" Mode="In" Type="Int32" />
+      <Parameter Name="Major" Mode="In" Type="Int32" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SelectMajor" ReturnType="Collection(LabMVC_B53953Model.SelectMajor_Result)" />
+    <FunctionImport Name="SelectNationality" ReturnType="Collection(LabMVC_B53953Model.SelectNationality_Result)" />
+    <FunctionImport Name="SelectStudent" ReturnType="Collection(LabMVC_B53953Model.SelectStudent_Result)" />
+    <FunctionImport Name="SelectStudentById" ReturnType="Collection(LabMVC_B53953Model.SelectStudentById_Result)">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpDeleteStudent">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpInsertUpdateStudent">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+      <Parameter Name="Name" Mode="In" Type="String" />
+      <Parameter Name="Age" Mode="In" Type="Int32" />
+      <Parameter Name="Nationality" Mode="In" Type="Int32" />
+      <Parameter Name="Major" Mode="In" Type="Int32" />
+      <Parameter Name="Action" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="SpSelectStudent" ReturnType="Collection(LabMVC_B53953Model.SelectStudent_Result)" />
+    <FunctionImport Name="SpSelectStudentById" ReturnType="Collection(LabMVC_B53953Model.SelectStudentById_Result)">
+      <Parameter Name="StudentId" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="SpSelectMajor" EntitySet="Major" ReturnType="Collection(LabMVC_B53953Model.Major)" />
+    <FunctionImport Name="SpSelectNationality" EntitySet="Nationality" ReturnType="Collection(LabMVC_B53953Model.Nationality)" />
+  </EntityContainer>
+  <ComplexType Name="SelectMajor_Result">
+    <Property Type="Int32" Name="MajorId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectNationality_Result">
+    <Property Type="Int32" Name="NationalityId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="SelectStudent_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="NationalityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MajorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NationalityId" Nullable="false" />
+    <Property Type="Int32" Name="MajorId" Nullable="false" />
+  </ComplexType>
+  <ComplexType Name="SelectStudentById_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="Age" Nullable="true" />
+    <Property Type="String" Name="NationalityName" Nullable="true" MaxLength="50" />
+    <Property Type="String" Name="MajorName" Nullable="true" MaxLength="50" />
+    <Property Type="Int32" Name="NationalityId" Nullable="false" />
+    <Property Type="Int32" Name="MajorId" Nullable="false" />
+  </ComplexType>
+</Schema>
