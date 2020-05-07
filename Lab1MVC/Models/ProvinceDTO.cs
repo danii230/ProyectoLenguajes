@@ -5,23 +5,22 @@ using System.Web;
 
 namespace Lab1MVC.Models
 {
-    public class MajorDTO
+    public class ProvinceDTO
     {
-        private int majorId;
+        private int provinceId;
         private string name;
 
-        public MajorDTO()
+        public ProvinceDTO()
         {
         }
 
-        public MajorDTO(int majorId, string name)
+        public ProvinceDTO(int provinceId, string name)
         {
-            this.majorId = majorId;
+            this.provinceId = provinceId;
             this.name = name;
         }
 
-        public int MajorId { get => majorId; set => majorId = value; }
+        public int ProvinceId { get => provinceId; set => provinceId = value; }
         public string Name { get => name; set => name = value; }
-
     }
 }

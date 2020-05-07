@@ -7,16 +7,17 @@ using Lab1MVC.Models;
 
 namespace Lab1MVC.Controllers
 {
-    public class NationalityController : Controller
+    public class CantonController : Controller
     {
-        NationalityDataEF nationalityData = new NationalityDataEF();
+
+        CantonData cantonData = new CantonData();
 
         public JsonResult List()
         {
-            return Json(nationalityData.ListAll(), JsonRequestBehavior.AllowGet);
-           // return Json(nationalityData.ListAllSP(), JsonRequestBehavior.AllowGet);
-        }
+            return Json(cantonData.ListAll(), JsonRequestBehavior.AllowGet);
 
+        }
+        // GET: Canton
         public ActionResult Index()
         {
             return View();

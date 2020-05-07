@@ -7,18 +7,19 @@ using Lab1MVC.Models;
 
 namespace Lab1MVC.Controllers
 {
-    public class MajorController : Controller
+    public class ProvinceController : Controller
     {
 
-        MajorDataEF majorDataEF = new MajorDataEF();
+
+        ProvinceData provinceData = new ProvinceData();
 
         public JsonResult List()
         {
-            return Json(majorDataEF.ListAll(), JsonRequestBehavior.AllowGet);
-           // return Json(majorDataEF.ListAllSP(), JsonRequestBehavior.AllowGet);
+            return Json(provinceData.ListAll(), JsonRequestBehavior.AllowGet);
+ 
         }
 
-        // GET: Major
+        // GET: Province
         public ActionResult Index()
         {
             return View();

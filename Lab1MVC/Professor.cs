@@ -12,11 +12,16 @@ namespace Lab1MVC
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Professor
     {
-        public int StudentId { get; set; }
-        public bool IsPresident { get; set; }
-        public bool Admited { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Professor()
+        {
+            this.Experienced = new HashSet<Experienced>();
+        }
+    
+        public int ProfessorId { get; set; }
+        public bool IsAdmin { get; set; }
         public int AppUser { get; set; }
         public System.DateTime CreateAt { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
@@ -24,5 +29,7 @@ namespace Lab1MVC
         public string UpdateBy { get; set; }
     
         public virtual App_User App_User { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Experienced> Experienced { get; set; }
     }
 }

@@ -12,17 +12,20 @@ namespace Lab1MVC
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Experienced
     {
-        public int StudentId { get; set; }
-        public bool IsPresident { get; set; }
-        public bool Admited { get; set; }
-        public int AppUser { get; set; }
+        public int ExperiencedId { get; set; }
+        public string Institution { get; set; }
+        public string Degree { get; set; }
+        public System.DateTime Beginning_year { get; set; }
+        public System.DateTime Final_year { get; set; }
+        public string Description { get; set; }
+        public int Professor { get; set; }
         public System.DateTime CreateAt { get; set; }
         public Nullable<System.DateTime> UpdateAt { get; set; }
         public string CreateBy { get; set; }
         public string UpdateBy { get; set; }
     
-        public virtual App_User App_User { get; set; }
+        public virtual Professor Professor1 { get; set; }
     }
 }

@@ -6,7 +6,7 @@ using System.Web;
 namespace Lab1MVC.Models
 {
     public class StudentDataEF
-    {
+    {/*
         public List<SelectStudent_Result> ListAllSP()
         {
             using (var context = new LabMVC())
@@ -69,6 +69,6 @@ namespace Lab1MVC.Models
 
                 return resultToReturn;
             }
-        }
+        }*/
     }
 }

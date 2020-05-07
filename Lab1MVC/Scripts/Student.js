@@ -3,6 +3,7 @@
 $(document).ready(function () {
     loadData();
     loadNationalities();
+    loadProvince();
     loadMajors(); 
 });
 
@@ -43,37 +44,38 @@ function loadData() {
 
 }
 
-function loadNationalities() {
+
+function loadProvince() {
 
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "/Nationality/List",
+            url: "/Province/List",
             data: "{}",
             success: function (data) {
                 var s = "";
                 for (var i = 0; i < data.length; i++) {
-                    s += '<option value="' + data[i].NationalityId + '">' + data[i].Name + '</option>';
+                    s += '<option value="' + data[i].ProvinceId + '">' + data[i].Name + '</option>';
                 }
-                $("#NationalitiesDropdown").html(s);
+                $("#ProvinceDropdown").html(s);
             }
         });
-    });  
+    });
 }
 
-function loadMajors() {
+function loadCanton() {
 
     $(document).ready(function () {
         $.ajax({
             type: "GET",
-            url: "/Major/List",
+            url: "/Canton/List",
             data: "{}",
             success: function (data) {
                 var s = "";
                 for (var i = 0; i < data.length; i++) {
-                    s += '<option value="' + data[i].MajorId + '">' + data[i].Name + '</option>';
+                    s += '<option value="' + data[i].CantonId + '">' + data[i].Name + '</option>';
                 }
-                $("#MajorsDropdown").html(s);
+                $("#CantonDropdown").html(s);
             }
         });
     });
@@ -114,6 +116,42 @@ function Add() {
                alert(errorMessage.responseText);
            }
      });
+}
+
+function AddProfessor() {
+
+    var province = {
+        Province: $("#ProvinceDropdown option:selected").val()
+    };
+
+    var canton = {
+        Canton: $("#CantonDropdown option:selected").val()
+    }
+
+    var student = {
+        //StudentId: $('#studentId').val(),
+        Email: $('#Name').val(),
+        Age: $('#Age').val(),
+        StudentNationality: nationality,
+        StudentMajor: major
+    };
+    $.ajax({
+        url: "/Student/Add",
+        data: JSON.stringify(student),
+        type: "POST",
+        contentType: "application/json;charset=utf-8",
+        dataType: "json",
+        success: function (result) {
+
+            loadData();
+            $('#myModal').modal('hide');
+            $('.modal-backdrop').remove();
+
+        },
+        error: function (errorMessage) {
+            alert(errorMessage.responseText);
+        }
+    });
 }
 
 function Update() {
@@ -198,8 +236,28 @@ function GetById(studentId) {
     });
 }
 
+function clearTextBox2() {
+    $('#myModalProfessor').modal("show");
+    $('#StudentId').val("");
+    $('#Email').val("");
+    $('#Password').val("");
+    $("#Name").val("");
+    $("#LastName").val("");
+    $("#IsAdmin").val("");
+    $("#ProvinceDropdown").val(0);
+    $("#CantonDropdown").val(0);
+    $("#District").val("");
+    $('#btnUpdate').hide();
+    $('#btnAdd').show();
+    $('#titleUpdate').hide();
+    $('#titleAdd').show();
+    $('body').addClass("model-open");
+    $('.modal-backdrop').add();
+
+}
+
 function clearTextBox() {
-    $('#myModal').modal("show");
+    $('#myModalStudent').modal("show");
     $('#StudentId').val("");
     $('#Name').val("");
     $('#Age').val("");
@@ -212,6 +270,10 @@ function clearTextBox() {
     $('body').addClass("model-open");
     $('.modal-backdrop').add();
 
+}
+
+function ModalRequest() {
+    $('#myModalRequest').modal("show");
 }
 
 

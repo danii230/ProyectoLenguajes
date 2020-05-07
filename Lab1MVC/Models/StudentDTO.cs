@@ -10,8 +10,6 @@ namespace Lab1MVC.Models
 
         public int StudentId { get; set; }
         public string Name { get; set; }
-        public Nullable<int> Age { get; set; }
-        public NationalityDTO Nationality { get; set; }
-        public  MajorDTO Major { get; set; }
+        public Nullable<int> Age { get; set; } 
     }
 }

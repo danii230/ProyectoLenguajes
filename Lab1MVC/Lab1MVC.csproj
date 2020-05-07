@@ -128,10 +128,22 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_User.cs">
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Canton.cs">
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Controllers\CantonController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\MajorController.cs" />
-    <Compile Include="Controllers\NationalityController.cs" />
+    <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
+    <Compile Include="District.cs">
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Experienced.cs">
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -153,19 +165,39 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Models\MajorDTO.cs" />
-    <Compile Include="Models\MajorData.cs" />
-    <Compile Include="Models\MajorDataEF.cs" />
-    <Compile Include="Models\NationalityDTO.cs" />
-    <Compile Include="Models\NationalityData.cs" />
-    <Compile Include="Models\NationalityDataEF.cs" />
-    <Compile Include="Models\StudentData.cs" />
+    <Compile Include="Models\CantonData.cs" />
+    <Compile Include="Models\CantonDTO.cs" />
+    <Compile Include="Models\ProfessorData.cs" />
+    <Compile Include="Models\ProfessorDTO.cs" />
+    <Compile Include="Models\ProvinceData.cs" />
+    <Compile Include="Models\ProvinceDTO.cs" />
     <Compile Include="Models\StudentDataEF.cs" />
     <Compile Include="Models\StudentDTO.cs" />
     <Compile Include="Nationality.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Professor.cs">
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Province.cs">
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectConnection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectConnection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectConnection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectConnection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProyectConnection.edmx</DependentUpon>
+    </Compile>
     <Compile Include="SelectMajor_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -179,7 +211,7 @@
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Student.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+      <DependentUpon>ProyectConnection.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -213,6 +245,16 @@
       <DependentUpon>Model1.edmx</DependentUpon>
       <LastGenOutput>Model1.cs</LastGenOutput>
     </Content>
+    <Content Include="ProyectConnection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectConnection.edmx</DependentUpon>
+      <LastGenOutput>ProyectConnection.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="ProyectConnection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProyectConnection.edmx</DependentUpon>
+      <LastGenOutput>ProyectConnection.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Model1.edmx">
@@ -221,6 +263,13 @@
     </EntityDeploy>
     <Content Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="ProyectConnection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProyectConnection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="ProyectConnection.edmx.diagram">
+      <DependentUpon>ProyectConnection.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
@@ -253,8 +302,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Canton\" />
     <Folder Include="Views\Major\" />
     <Folder Include="Views\Nationality\" />
+    <Folder Include="Views\Province\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

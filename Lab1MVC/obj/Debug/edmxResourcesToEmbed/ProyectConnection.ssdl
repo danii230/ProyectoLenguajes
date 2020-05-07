@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="ProyectConnection.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="App_User">
+    <Key>
+      <PropertyRef Name="AppUserId" />
+    </Key>
+    <Property Name="AppUserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Password" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="URLPhoto" Type="varchar" MaxLength="100" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="LastName" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Phone" Type="varchar" MaxLength="50" />
+    <Property Name="Province" Type="int" Nullable="false" />
+    <Property Name="Canton" Type="int" Nullable="false" />
+    <Property Name="District" Type="int" Nullable="false" />
+    <Property Name="Interest" Type="text" />
+    <Property Name="Status" Type="bit" Nullable="false" />
+    <Property Name="CreateAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Canton">
+    <Key>
+      <PropertyRef Name="CantonId" />
+    </Key>
+    <Property Name="CantonId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Experienced">
+    <Key>
+      <PropertyRef Name="ExperiencedId" />
+    </Key>
+    <Property Name="ExperiencedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Institution" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Degree" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="Beginning_year" Type="date" Nullable="false" />
+    <Property Name="Final_year" Type="date" Nullable="false" />
+    <Property Name="Description" Type="text" Nullable="false" />
+    <Property Name="Professor" Type="int" Nullable="false" />
+    <Property Name="CreateAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="ProfessorId" />
+    </Key>
+    <Property Name="ProfessorId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsAdmin" Type="bit" Nullable="false" />
+    <Property Name="AppUser" Type="int" Nullable="false" />
+    <Property Name="CreateAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="ProvinceId" />
+    </Key>
+    <Property Name="ProvinceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="varchar" MaxLength="50" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="IsPresident" Type="bit" Nullable="false" />
+    <Property Name="Admited" Type="bit" Nullable="false" />
+    <Property Name="AppUser" Type="int" Nullable="false" />
+    <Property Name="CreateAt" Type="datetime" Nullable="false" />
+    <Property Name="UpdateAt" Type="datetime" />
+    <Property Name="CreateBy" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="UpdateBy" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <Association Name="FK__App_User__Canton__534D60F1">
+    <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+    <End Role="App_User" Type="Self.App_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canton">
+        <PropertyRef Name="CantonId" />
+      </Principal>
+      <Dependent Role="App_User">
+        <PropertyRef Name="Canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__App_User__Distri__5441852A">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="App_User" Type="Self.App_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="DistrictId" />
+      </Principal>
+      <Dependent Role="App_User">
+        <PropertyRef Name="District" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__App_User__Provin__52593CB8">
+    <End Role="Province" Type="Self.Province" Multiplicity="1" />
+    <End Role="App_User" Type="Self.App_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceId" />
+      </Principal>
+      <Dependent Role="App_User">
+        <PropertyRef Name="Province" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Experienc__Profe__5CD6CB2B">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="Experienced" Type="Self.Experienced" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfessorId" />
+      </Principal>
+      <Dependent Role="Experienced">
+        <PropertyRef Name="Professor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__AppUs__59FA5E80">
+    <End Role="App_User" Type="Self.App_User" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App_User">
+        <PropertyRef Name="AppUserId" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="AppUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__AppUser__571DF1D5">
+    <End Role="App_User" Type="Self.App_User" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App_User">
+        <PropertyRef Name="AppUserId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="AppUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="ProyectConnectionStoreContainer">
+    <EntitySet Name="App_User" EntityType="Self.App_User" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Canton" EntityType="Self.Canton" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Experienced" EntityType="Self.Experienced" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Professor" EntityType="Self.Professor" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Student" EntityType="Self.Student" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__App_User__Canton__534D60F1" Association="Self.FK__App_User__Canton__534D60F1">
+      <End Role="Canton" EntitySet="Canton" />
+      <End Role="App_User" EntitySet="App_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__App_User__Distri__5441852A" Association="Self.FK__App_User__Distri__5441852A">
+      <End Role="District" EntitySet="District" />
+      <End Role="App_User" EntitySet="App_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__App_User__Provin__52593CB8" Association="Self.FK__App_User__Provin__52593CB8">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="App_User" EntitySet="App_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Experienc__Profe__5CD6CB2B" Association="Self.FK__Experienc__Profe__5CD6CB2B">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Experienced" EntitySet="Experienced" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__AppUs__59FA5E80" Association="Self.FK__Professor__AppUs__59FA5E80">
+      <End Role="App_User" EntitySet="App_User" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__AppUser__571DF1D5" Association="Self.FK__Student__AppUser__571DF1D5">
+      <End Role="App_User" EntitySet="App_User" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

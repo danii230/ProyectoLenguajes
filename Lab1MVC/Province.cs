@@ -12,17 +12,18 @@ namespace Lab1MVC
     using System;
     using System.Collections.Generic;
     
-    public partial class Student
+    public partial class Province
     {
-        public int StudentId { get; set; }
-        public bool IsPresident { get; set; }
-        public bool Admited { get; set; }
-        public int AppUser { get; set; }
-        public System.DateTime CreateAt { get; set; }
-        public Nullable<System.DateTime> UpdateAt { get; set; }
-        public string CreateBy { get; set; }
-        public string UpdateBy { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public Province()
+        {
+            this.App_User = new HashSet<App_User>();
+        }
     
-        public virtual App_User App_User { get; set; }
+        public int ProvinceId { get; set; }
+        public string Name { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<App_User> App_User { get; set; }
     }
 }

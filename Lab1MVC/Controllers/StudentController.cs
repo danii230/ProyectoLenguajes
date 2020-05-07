@@ -11,7 +11,7 @@ namespace Lab1MVC.Controllers
     {
 
         StudentDataEF studentDataEF = new StudentDataEF();
-
+/*
 
 
         public JsonResult Add(Student student)
@@ -47,7 +47,7 @@ namespace Lab1MVC.Controllers
         {
 
             return Json(studentDataEF.Update(student), JsonRequestBehavior.AllowGet);
-        }
+        }*/
         // GET: Student
         public ActionResult Index()
         {
