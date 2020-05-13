@@ -12,7 +12,7 @@ namespace Lab1MVC.Models
         {
             List<ProvinceDTO> province = null;
 
-            using (var context = new Proyecto1LenguajesB53953Entities())
+            using (var context = new Connection())
             {
                 province = context.Province
                   .Select(provinceItem => new ProvinceDTO()
@@ -25,5 +25,6 @@ namespace Lab1MVC.Models
             return province;
 
         }
+
     }
 }

@@ -1,0 +1,268 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="Proyecto1LenguajesB53953Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="App_User">
+    <Key>
+      <PropertyRef Name="AppUserId" />
+    </Key>
+    <Property Name="AppUserId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="URLPhoto" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Phone" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Province" Type="Int32" Nullable="false" />
+    <Property Name="Canton" Type="Int32" Nullable="false" />
+    <Property Name="District" Type="Int32" Nullable="false" />
+    <Property Name="Interest" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="Status" Type="Boolean" Nullable="false" />
+    <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Canton1" Relationship="Self.FK__App_User__Canton__2D27B809" FromRole="App_User" ToRole="Canton" />
+    <NavigationProperty Name="District1" Relationship="Self.FK__App_User__Distri__2E1BDC42" FromRole="App_User" ToRole="District" />
+    <NavigationProperty Name="Province1" Relationship="Self.FK__App_User__Provin__2C3393D0" FromRole="App_User" ToRole="Province" />
+    <NavigationProperty Name="Professor" Relationship="Self.FK__Professor__AppUs__33D4B598" FromRole="App_User" ToRole="Professor" />
+    <NavigationProperty Name="Student" Relationship="Self.FK__Student__AppUser__30F848ED" FromRole="App_User" ToRole="Student" />
+  </EntityType>
+  <EntityType Name="Canton">
+    <Key>
+      <PropertyRef Name="CantonId" />
+    </Key>
+    <Property Name="CantonId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="App_User" Relationship="Self.FK__App_User__Canton__2D27B809" FromRole="Canton" ToRole="App_User" />
+  </EntityType>
+  <EntityType Name="District">
+    <Key>
+      <PropertyRef Name="DistrictId" />
+    </Key>
+    <Property Name="DistrictId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="App_User" Relationship="Self.FK__App_User__Distri__2E1BDC42" FromRole="District" ToRole="App_User" />
+  </EntityType>
+  <EntityType Name="Experienced">
+    <Key>
+      <PropertyRef Name="ExperiencedId" />
+    </Key>
+    <Property Name="ExperiencedId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Institution" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Degree" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Beginning_year" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Final_year" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="Professor" Type="Int32" Nullable="false" />
+    <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="Professor1" Relationship="Self.FK__Experienc__Profe__36B12243" FromRole="Experienced" ToRole="Professor" />
+  </EntityType>
+  <EntityType Name="Professor">
+    <Key>
+      <PropertyRef Name="ProfessorId" />
+    </Key>
+    <Property Name="ProfessorId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsAdmin" Type="Boolean" Nullable="false" />
+    <Property Name="AppUser" Type="Int32" Nullable="false" />
+    <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="App_User" Relationship="Self.FK__Professor__AppUs__33D4B598" FromRole="Professor" ToRole="App_User" />
+    <NavigationProperty Name="Experienced" Relationship="Self.FK__Experienc__Profe__36B12243" FromRole="Professor" ToRole="Experienced" />
+  </EntityType>
+  <EntityType Name="Province">
+    <Key>
+      <PropertyRef Name="ProvinceId" />
+    </Key>
+    <Property Name="ProvinceId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <NavigationProperty Name="App_User" Relationship="Self.FK__App_User__Provin__2C3393D0" FromRole="Province" ToRole="App_User" />
+  </EntityType>
+  <EntityType Name="Student">
+    <Key>
+      <PropertyRef Name="StudentId" />
+    </Key>
+    <Property Name="StudentId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="IsPresident" Type="Boolean" Nullable="false" />
+    <Property Name="Admited" Type="Boolean" Nullable="false" />
+    <Property Name="AppUser" Type="Int32" Nullable="false" />
+    <Property Name="CreateAt" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="UpdateAt" Type="DateTime" Precision="3" />
+    <Property Name="CreateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="UpdateBy" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="App_User" Relationship="Self.FK__Student__AppUser__30F848ED" FromRole="Student" ToRole="App_User" />
+  </EntityType>
+  <Association Name="FK__App_User__Canton__2D27B809">
+    <End Role="Canton" Type="Self.Canton" Multiplicity="1" />
+    <End Role="App_User" Type="Self.App_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Canton">
+        <PropertyRef Name="CantonId" />
+      </Principal>
+      <Dependent Role="App_User">
+        <PropertyRef Name="Canton" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__App_User__Distri__2E1BDC42">
+    <End Role="District" Type="Self.District" Multiplicity="1" />
+    <End Role="App_User" Type="Self.App_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="District">
+        <PropertyRef Name="DistrictId" />
+      </Principal>
+      <Dependent Role="App_User">
+        <PropertyRef Name="District" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__App_User__Provin__2C3393D0">
+    <End Role="Province" Type="Self.Province" Multiplicity="1" />
+    <End Role="App_User" Type="Self.App_User" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Province">
+        <PropertyRef Name="ProvinceId" />
+      </Principal>
+      <Dependent Role="App_User">
+        <PropertyRef Name="Province" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Professor__AppUs__33D4B598">
+    <End Role="App_User" Type="Self.App_User" Multiplicity="1" />
+    <End Role="Professor" Type="Self.Professor" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App_User">
+        <PropertyRef Name="AppUserId" />
+      </Principal>
+      <Dependent Role="Professor">
+        <PropertyRef Name="AppUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Student__AppUser__30F848ED">
+    <End Role="App_User" Type="Self.App_User" Multiplicity="1" />
+    <End Role="Student" Type="Self.Student" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="App_User">
+        <PropertyRef Name="AppUserId" />
+      </Principal>
+      <Dependent Role="Student">
+        <PropertyRef Name="AppUser" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__Experienc__Profe__36B12243">
+    <End Role="Professor" Type="Self.Professor" Multiplicity="1" />
+    <End Role="Experienced" Type="Self.Experienced" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Professor">
+        <PropertyRef Name="ProfessorId" />
+      </Principal>
+      <Dependent Role="Experienced">
+        <PropertyRef Name="Professor" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Connection" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="App_User" EntityType="Self.App_User" />
+    <EntitySet Name="Canton" EntityType="Self.Canton" />
+    <EntitySet Name="District" EntityType="Self.District" />
+    <EntitySet Name="Experienced" EntityType="Self.Experienced" />
+    <EntitySet Name="Professor" EntityType="Self.Professor" />
+    <EntitySet Name="Province" EntityType="Self.Province" />
+    <EntitySet Name="Student" EntityType="Self.Student" />
+    <AssociationSet Name="FK__App_User__Canton__2D27B809" Association="Self.FK__App_User__Canton__2D27B809">
+      <End Role="Canton" EntitySet="Canton" />
+      <End Role="App_User" EntitySet="App_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__App_User__Distri__2E1BDC42" Association="Self.FK__App_User__Distri__2E1BDC42">
+      <End Role="District" EntitySet="District" />
+      <End Role="App_User" EntitySet="App_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__App_User__Provin__2C3393D0" Association="Self.FK__App_User__Provin__2C3393D0">
+      <End Role="Province" EntitySet="Province" />
+      <End Role="App_User" EntitySet="App_User" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Professor__AppUs__33D4B598" Association="Self.FK__Professor__AppUs__33D4B598">
+      <End Role="App_User" EntitySet="App_User" />
+      <End Role="Professor" EntitySet="Professor" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Student__AppUser__30F848ED" Association="Self.FK__Student__AppUser__30F848ED">
+      <End Role="App_User" EntitySet="App_User" />
+      <End Role="Student" EntitySet="Student" />
+    </AssociationSet>
+    <AssociationSet Name="FK__Experienc__Profe__36B12243" Association="Self.FK__Experienc__Profe__36B12243">
+      <End Role="Professor" EntitySet="Professor" />
+      <End Role="Experienced" EntitySet="Experienced" />
+    </AssociationSet>
+    <FunctionImport Name="Add_Professor">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="province" Mode="In" Type="Int32" />
+      <Parameter Name="canton" Mode="In" Type="Int32" />
+      <Parameter Name="district" Mode="In" Type="String" />
+      <Parameter Name="is_admin" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="Add_Student">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="province" Mode="In" Type="Int32" />
+      <Parameter Name="canton" Mode="In" Type="Int32" />
+      <Parameter Name="district" Mode="In" Type="String" />
+      <Parameter Name="interest" Mode="In" Type="String" />
+    </FunctionImport>
+    <FunctionImport Name="Delete_Student">
+      <Parameter Name="student_id" Mode="In" Type="Int32" />
+    </FunctionImport>
+    <FunctionImport Name="Select_Canton" ReturnType="Collection(Proyecto1LenguajesB53953Model.Select_Canton_Result)" />
+    <FunctionImport Name="Select_Province" ReturnType="Collection(Proyecto1LenguajesB53953Model.Select_Province_Result)" />
+    <FunctionImport Name="View_Student_unacceptable" ReturnType="Collection(Proyecto1LenguajesB53953Model.View_Student_unacceptable_Result)" />
+    <FunctionImport Name="SpSelect_Province" />
+    <FunctionImport Name="SpAdd_Professor">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="province" Mode="In" Type="Int32" />
+      <Parameter Name="canton" Mode="In" Type="Int32" />
+      <Parameter Name="district" Mode="In" Type="String" />
+      <Parameter Name="is_admin" Mode="In" Type="Boolean" />
+    </FunctionImport>
+    <FunctionImport Name="SpAdd_Student">
+      <Parameter Name="email" Mode="In" Type="String" />
+      <Parameter Name="password" Mode="In" Type="String" />
+      <Parameter Name="name" Mode="In" Type="String" />
+      <Parameter Name="lastName" Mode="In" Type="String" />
+      <Parameter Name="phone" Mode="In" Type="String" />
+      <Parameter Name="province" Mode="In" Type="Int32" />
+      <Parameter Name="canton" Mode="In" Type="Int32" />
+      <Parameter Name="district" Mode="In" Type="String" />
+      <Parameter Name="interest" Mode="In" Type="String" />
+    </FunctionImport>
+  </EntityContainer>
+  <ComplexType Name="Select_Canton_Result">
+    <Property Type="Int32" Name="CantonId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="Select_Province_Result">
+    <Property Type="Int32" Name="ProvinceId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+  </ComplexType>
+  <ComplexType Name="View_Student_unacceptable_Result">
+    <Property Type="Int32" Name="StudentId" Nullable="false" />
+    <Property Type="String" Name="Name" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="LastName" Nullable="false" MaxLength="50" />
+    <Property Type="String" Name="Email" Nullable="false" MaxLength="50" />
+  </ComplexType>
+</Schema>

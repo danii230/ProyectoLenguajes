@@ -15,8 +15,9 @@ namespace Lab1MVC.Controllers
 
         public JsonResult List()
         {
-            return Json(provinceData.ListAll(), JsonRequestBehavior.AllowGet);
- 
+             return Json(provinceData.ListAll(), JsonRequestBehavior.AllowGet);
+           // return Json(provinceData.ListAllSp(), JsonRequestBehavior.AllowGet);
+
         }
 
         // GET: Province

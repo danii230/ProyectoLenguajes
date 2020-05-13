@@ -6,15 +6,10 @@ using System.Web.Mvc;
 
 namespace Lab1MVC.Controllers
 {
-    public class HomeController : Controller
+    public class ContactController : Controller
     {
-        // GET: Home
-        public ActionResult Professor()
-        {
-            return View();
-        }
-
-        public ActionResult Student()
+        // GET: Contact
+        public ActionResult Index()
         {
             return View();
         }

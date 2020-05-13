@@ -11,7 +11,7 @@ namespace Lab1MVC.Models
         {
             List<CantonDTO> canton = null;
 
-            using (var context = new Proyecto1LenguajesB53953Entities())
+            using (var context = new Connection())
             {
                 canton = context.Canton
                   .Select(cantonItem => new CantonDTO()

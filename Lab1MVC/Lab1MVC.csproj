@@ -134,8 +134,26 @@
     <Compile Include="Canton.cs">
       <DependentUpon>ProyectConnection.tt</DependentUpon>
     </Compile>
+    <Compile Include="Connection.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Connection.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Connection.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Connection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Connection.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Connection.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Controllers\CantonController.cs" />
+    <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\EmailController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ProfessorController.cs" />
     <Compile Include="Controllers\ProvinceController.cs" />
     <Compile Include="Controllers\StudentController.cs" />
     <Compile Include="District.cs">
@@ -167,11 +185,13 @@
     </Compile>
     <Compile Include="Models\CantonData.cs" />
     <Compile Include="Models\CantonDTO.cs" />
+    <Compile Include="Models\EmailData.cs" />
+    <Compile Include="Models\EmailDTO.cs" />
     <Compile Include="Models\ProfessorData.cs" />
     <Compile Include="Models\ProfessorDTO.cs" />
     <Compile Include="Models\ProvinceData.cs" />
     <Compile Include="Models\ProvinceDTO.cs" />
-    <Compile Include="Models\StudentDataEF.cs" />
+    <Compile Include="Models\StudentData.cs" />
     <Compile Include="Models\StudentDTO.cs" />
     <Compile Include="Nationality.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -210,11 +230,30 @@
     <Compile Include="SelectStudent_Result.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Select_Canton_Result.cs">
+      <DependentUpon>Connection.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Select_Province_Result.cs">
+      <DependentUpon>Connection.tt</DependentUpon>
+    </Compile>
     <Compile Include="Student.cs">
       <DependentUpon>ProyectConnection.tt</DependentUpon>
     </Compile>
+    <Compile Include="View_Student_unacceptable_Result.cs">
+      <DependentUpon>Connection.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Connection.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Connection.edmx</DependentUpon>
+      <LastGenOutput>Connection.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Connection.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Connection.edmx</DependentUpon>
+      <LastGenOutput>Connection.cs</LastGenOutput>
+    </Content>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -271,6 +310,13 @@
     <Content Include="ProyectConnection.edmx.diagram">
       <DependentUpon>ProyectConnection.edmx</DependentUpon>
     </Content>
+    <EntityDeploy Include="Connection.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Connection.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Connection.edmx.diagram">
+      <DependentUpon>Connection.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\dataTables.bootstrap.js" />
     <Content Include="Scripts\datatables.js" />
@@ -296,15 +342,18 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Student.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
-    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Home\Professor.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Canton\" />
+    <Folder Include="Views\Contact\" />
+    <Folder Include="Views\Email\" />
     <Folder Include="Views\Major\" />
     <Folder Include="Views\Nationality\" />
+    <Folder Include="Views\Professor\" />
     <Folder Include="Views\Province\" />
   </ItemGroup>
   <ItemGroup>
